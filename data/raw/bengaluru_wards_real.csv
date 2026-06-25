@@ -1,0 +1,198 @@
+ward_number,ward_id,locality,zone,centroid_lat,centroid_lng
+Ward-1,1,Yelahanka,North,13.103949,77.595076
+Ward-2,2,Yelahanka,North,13.099866,77.596187
+Ward-3,3,Yelahanka,North,13.104277,77.597173
+Ward-4,4,Yelahanka,North,13.100801,77.5973
+Ward-5,5,Yelahanka,North,13.101582,77.595638
+Ward-6,6,Yelahanka,North,13.100076,77.597758
+Ward-7,7,Yelahanka,North,13.104081,77.595368
+Ward-8,8,Hebbal,North,13.035382,77.592983
+Ward-9,9,Hebbal,North,13.035202,77.590221
+Ward-10,10,Hebbal,North,13.037863,77.592231
+Ward-11,11,Hebbal,North,13.038699,77.590228
+Ward-12,12,Hebbal,North,13.036146,77.589437
+Ward-13,13,Hebbal,North,13.033775,77.592308
+Ward-14,14,Yeshwanthpur,West,13.024903,77.543558
+Ward-15,15,Yeshwanthpur,West,13.021175,77.544079
+Ward-16,16,Yeshwanthpur,West,13.022056,77.540343
+Ward-17,17,Yeshwanthpur,West,13.022353,77.539691
+Ward-18,18,Yeshwanthpur,West,13.021959,77.54778
+Ward-19,19,Yeshwanthpur,West,13.022242,77.542719
+Ward-20,20,Yeshwanthpur,West,13.023568,77.543792
+Ward-21,21,Yeshwanthpur,West,13.021696,77.543178
+Ward-22,22,Rajajinagar,West,12.996916,77.553373
+Ward-23,23,Rajajinagar,West,12.998434,77.556352
+Ward-24,24,Rajajinagar,West,12.999758,77.55476
+Ward-25,25,Rajajinagar,West,12.997557,77.558354
+Ward-26,26,Rajajinagar,West,12.997492,77.552418
+Ward-27,27,Rajajinagar,West,12.999671,77.555693
+Ward-28,28,Rajajinagar,West,12.997993,77.559638
+Ward-29,29,Rajajinagar,West,12.996265,77.557712
+Ward-30,30,Malleswaram,Central,13.000872,77.572656
+Ward-31,31,Malleswaram,Central,13.00257,77.568933
+Ward-32,32,Malleswaram,Central,13.002702,77.571567
+Ward-33,33,Malleswaram,Central,13.002762,77.566394
+Ward-34,34,Malleswaram,Central,13.003888,77.568105
+Ward-35,35,Malleswaram,Central,12.999621,77.568773
+Ward-36,36,Shivajinagar,Central,12.986353,77.603142
+Ward-37,37,Shivajinagar,Central,12.984891,77.601449
+Ward-38,38,Shivajinagar,Central,12.987017,77.599454
+Ward-39,39,Shivajinagar,Central,12.98781,77.600542
+Ward-40,40,Shivajinagar,Central,12.983785,77.599848
+Ward-41,41,Shivajinagar,Central,12.984459,77.60031
+Ward-42,42,Indiranagar,East,12.979393,77.640523
+Ward-43,43,Indiranagar,East,12.978915,77.638983
+Ward-44,44,Indiranagar,East,12.976899,77.643433
+Ward-45,45,Indiranagar,East,12.978453,77.641321
+Ward-46,46,Indiranagar,East,12.97957,77.643262
+Ward-47,47,Indiranagar,East,12.976704,77.643412
+Ward-48,48,Indiranagar,East,12.976413,77.638673
+Ward-49,49,Indiranagar,East,12.976314,77.639158
+Ward-50,50,Whitefield,East,12.966679,77.749838
+Ward-51,51,Whitefield,East,12.969219,77.750124
+Ward-52,52,Whitefield,East,12.970839,77.747362
+Ward-53,53,Whitefield,East,12.970212,77.752234
+Ward-54,54,Whitefield,East,12.966096,77.747738
+Ward-55,55,Whitefield,East,12.966553,77.749696
+Ward-56,56,Whitefield,East,12.967725,77.751087
+Ward-57,57,Whitefield,East,12.969538,77.749499
+Ward-58,58,Whitefield,East,12.96828,77.745697
+Ward-59,59,Whitefield,East,12.966461,77.751026
+Ward-60,60,Marathahalli,East,12.957256,77.695927
+Ward-61,61,Marathahalli,East,12.958237,77.697979
+Ward-62,62,Marathahalli,East,12.959075,77.696045
+Ward-63,63,Marathahalli,East,12.954822,77.699324
+Ward-64,64,Marathahalli,East,12.961301,77.693135
+Ward-65,65,Marathahalli,East,12.957433,77.696016
+Ward-66,66,Marathahalli,East,12.961931,77.694929
+Ward-67,67,Marathahalli,East,12.961357,77.697388
+Ward-68,68,KR Puram,East,13.004311,77.6975
+Ward-69,69,KR Puram,East,13.008031,77.695893
+Ward-70,70,KR Puram,East,13.007902,77.697456
+Ward-71,71,KR Puram,East,13.005339,77.694712
+Ward-72,72,KR Puram,East,13.006837,77.695741
+Ward-73,73,KR Puram,East,13.007354,77.701362
+Ward-74,74,KR Puram,East,13.007417,77.695827
+Ward-75,75,KR Puram,East,13.004781,77.697325
+Ward-76,76,Koramangala,South,12.937081,77.623385
+Ward-77,77,Koramangala,South,12.935649,77.625823
+Ward-78,78,Koramangala,South,12.935444,77.623891
+Ward-79,79,Koramangala,South,12.928567,77.624639
+Ward-80,80,Koramangala,South,12.939,77.624918
+Ward-81,81,Koramangala,South,12.93248,77.622029
+Ward-82,82,Koramangala,South,12.936881,77.621786
+Ward-83,83,Koramangala,South,12.936899,77.622255
+Ward-84,84,BTM Layout,South,12.916237,77.609179
+Ward-85,85,BTM Layout,South,12.916854,77.614856
+Ward-86,86,BTM Layout,South,12.915307,77.608889
+Ward-87,87,BTM Layout,South,12.917245,77.610356
+Ward-88,88,BTM Layout,South,12.916714,77.614512
+Ward-89,89,BTM Layout,South,12.913113,77.610096
+Ward-90,90,BTM Layout,South,12.916051,77.609645
+Ward-91,91,BTM Layout,South,12.915288,77.60798
+Ward-92,92,Jayanagar,South,12.931261,77.583716
+Ward-93,93,Jayanagar,South,12.93406,77.585301
+Ward-94,94,Jayanagar,South,12.932287,77.586142
+Ward-95,95,Jayanagar,South,12.929471,77.581935
+Ward-96,96,Jayanagar,South,12.93094,77.583003
+Ward-97,97,Jayanagar,South,12.927298,77.582241
+Ward-98,98,Jayanagar,South,12.931747,77.586375
+Ward-99,99,Jayanagar,South,12.930515,77.587214
+Ward-100,100,Basavanagudi,South,12.9383,77.575685
+Ward-101,101,Basavanagudi,South,12.947214,77.576256
+Ward-102,102,Basavanagudi,South,12.945136,77.576852
+Ward-103,103,Basavanagudi,South,12.939301,77.574479
+Ward-104,104,Basavanagudi,South,12.940964,77.573916
+Ward-105,105,Basavanagudi,South,12.941309,77.573773
+Ward-106,106,Basavanagudi,South,12.94613,77.573019
+Ward-107,107,Basavanagudi,South,12.942788,77.573692
+Ward-108,108,JP Nagar,South,12.906246,77.595143
+Ward-109,109,JP Nagar,South,12.907925,77.599581
+Ward-110,110,JP Nagar,South,12.908957,77.593108
+Ward-111,111,JP Nagar,South,12.906032,77.595469
+Ward-112,112,JP Nagar,South,12.911255,77.592068
+Ward-113,113,JP Nagar,South,12.908,77.596566
+Ward-114,114,JP Nagar,South,12.908256,77.5963
+Ward-115,115,JP Nagar,South,12.909544,77.592836
+Ward-116,116,Banashankari,South,12.922415,77.544337
+Ward-117,117,Banashankari,South,12.921744,77.545915
+Ward-118,118,Banashankari,South,12.925629,77.548083
+Ward-119,119,Banashankari,South,12.925385,77.549209
+Ward-120,120,Banashankari,South,12.925695,77.55085
+Ward-121,121,Banashankari,South,12.924976,77.54623
+Ward-122,122,Banashankari,South,12.926369,77.545156
+Ward-123,123,Banashankari,South,12.923229,77.548795
+Ward-124,124,Nagarbhavi,West,12.972477,77.509074
+Ward-125,125,Nagarbhavi,West,12.970502,77.510021
+Ward-126,126,Nagarbhavi,West,12.970575,77.512806
+Ward-127,127,Nagarbhavi,West,12.970756,77.510059
+Ward-128,128,Nagarbhavi,West,12.9711,77.511238
+Ward-129,129,Nagarbhavi,West,12.968642,77.510991
+Ward-130,130,Vijayanagar,West,12.971045,77.532374
+Ward-131,131,Vijayanagar,West,12.9728,77.534302
+Ward-132,132,Vijayanagar,West,12.970804,77.53659
+Ward-133,133,Vijayanagar,West,12.969842,77.533553
+Ward-134,134,Vijayanagar,West,12.971451,77.536675
+Ward-135,135,Vijayanagar,West,12.96937,77.536369
+Ward-136,136,Vijayanagar,West,12.971587,77.533692
+Ward-137,137,Vijayanagar,West,12.974082,77.536131
+Ward-138,138,Peenya,West,13.030181,77.519042
+Ward-139,139,Peenya,West,13.031795,77.516882
+Ward-140,140,Peenya,West,13.027566,77.517592
+Ward-141,141,Peenya,West,13.028591,77.518691
+Ward-142,142,Peenya,West,13.028759,77.518805
+Ward-143,143,Peenya,West,13.026834,77.519475
+Ward-144,144,Peenya,West,13.025903,77.516815
+Ward-145,145,Peenya,West,13.026843,77.517121
+Ward-146,146,Dasarahalli,North,13.049593,77.512224
+Ward-147,147,Dasarahalli,North,13.047592,77.509501
+Ward-148,148,Dasarahalli,North,13.042628,77.512755
+Ward-149,149,Dasarahalli,North,13.045004,77.51252
+Ward-150,150,Dasarahalli,North,13.044337,77.513081
+Ward-151,151,Dasarahalli,North,13.043527,77.513363
+Ward-152,152,Dasarahalli,North,13.044639,77.511875
+Ward-153,153,Dasarahalli,North,13.044994,77.509953
+Ward-154,154,Byatarayanapura,North,13.074124,77.566774
+Ward-155,155,Byatarayanapura,North,13.070749,77.566952
+Ward-156,156,Byatarayanapura,North,13.07067,77.562805
+Ward-157,157,Byatarayanapura,North,13.070263,77.569164
+Ward-158,158,Byatarayanapura,North,13.07229,77.57084
+Ward-159,159,Byatarayanapura,North,13.068282,77.567659
+Ward-160,160,Byatarayanapura,North,13.068506,77.568376
+Ward-161,161,Byatarayanapura,North,13.069156,77.567519
+Ward-162,162,Mahadevapura,East,13.009049,77.703426
+Ward-163,163,Mahadevapura,East,13.006267,77.70889
+Ward-164,164,Mahadevapura,East,13.004049,77.702964
+Ward-165,165,Mahadevapura,East,13.007612,77.707285
+Ward-166,166,Mahadevapura,East,13.008542,77.703924
+Ward-167,167,Mahadevapura,East,13.004216,77.703264
+Ward-168,168,Mahadevapura,East,13.007858,77.709963
+Ward-169,169,Mahadevapura,East,13.008103,77.705542
+Ward-170,170,Mahadevapura,East,13.006868,77.701471
+Ward-171,171,Mahadevapura,East,13.008391,77.705653
+Ward-172,172,Bommanahalli,South,12.891812,77.642625
+Ward-173,173,Bommanahalli,South,12.890046,77.643938
+Ward-174,174,Bommanahalli,South,12.891398,77.644809
+Ward-175,175,Bommanahalli,South,12.88823,77.64664
+Ward-176,176,Bommanahalli,South,12.887113,77.643816
+Ward-177,177,Bommanahalli,South,12.892491,77.64503
+Ward-178,178,Bommanahalli,South,12.888382,77.64506
+Ward-179,179,Bommanahalli,South,12.889364,77.645292
+Ward-180,180,Bommanahalli,South,12.887734,77.645274
+Ward-181,181,Bommanahalli,South,12.887476,77.645126
+Ward-182,182,Electronic City,South,12.846328,77.661102
+Ward-183,183,Electronic City,South,12.845588,77.663775
+Ward-184,184,Electronic City,South,12.845819,77.660266
+Ward-185,185,Electronic City,South,12.845889,77.659604
+Ward-186,186,Electronic City,South,12.849722,77.662754
+Ward-187,187,Electronic City,South,12.848536,77.657417
+Ward-188,188,Electronic City,South,12.84875,77.661922
+Ward-189,189,Electronic City,South,12.842035,77.659416
+Ward-190,190,Bellandur,East,12.927119,77.667636
+Ward-191,191,Bellandur,East,12.922398,77.665462
+Ward-192,192,Bellandur,East,12.924336,77.667517
+Ward-193,193,Bellandur,East,12.92907,77.662875
+Ward-194,194,Bellandur,East,12.928633,77.669294
+Ward-195,195,Bellandur,East,12.927639,77.66118
+Ward-196,196,Bellandur,East,12.927137,77.668394
+Ward-197,197,Bellandur,East,12.926358,77.66575

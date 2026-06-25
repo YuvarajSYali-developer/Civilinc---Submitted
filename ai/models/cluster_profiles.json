@@ -1,0 +1,326 @@
+[
+  {
+    "cluster_id": 0,
+    "size": 1354,
+    "top_categories": [
+      "water_supply"
+    ],
+    "top_wards": [
+      "Ward-17",
+      "Ward-2",
+      "Ward-48",
+      "Ward-39",
+      "Ward-123"
+    ],
+    "avg_priority_weight": 3.04,
+    "sla_breach_rate": 0.828,
+    "severity_score": 37.58,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 1,
+    "size": 1187,
+    "top_categories": [
+      "drainage"
+    ],
+    "top_wards": [
+      "Ward-53",
+      "Ward-191",
+      "Ward-80",
+      "Ward-32",
+      "Ward-88"
+    ],
+    "avg_priority_weight": 3.1,
+    "sla_breach_rate": 0.844,
+    "severity_score": 33.93,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 2,
+    "size": 999,
+    "top_categories": [
+      "electricity"
+    ],
+    "top_wards": [
+      "Ward-20",
+      "Ward-21",
+      "Ward-110",
+      "Ward-114",
+      "Ward-122"
+    ],
+    "avg_priority_weight": 2.99,
+    "sla_breach_rate": 0.944,
+    "severity_score": 29.02,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 3,
+    "size": 1896,
+    "top_categories": [
+      "roads"
+    ],
+    "top_wards": [
+      "Ward-176",
+      "Ward-144",
+      "Ward-56",
+      "Ward-30",
+      "Ward-86"
+    ],
+    "avg_priority_weight": 2.91,
+    "sla_breach_rate": 0.833,
+    "severity_score": 50.59,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 4,
+    "size": 1293,
+    "top_categories": [
+      "water_supply"
+    ],
+    "top_wards": [
+      "Ward-196",
+      "Ward-52",
+      "Ward-38",
+      "Ward-25",
+      "Ward-192"
+    ],
+    "avg_priority_weight": 3.03,
+    "sla_breach_rate": 0.827,
+    "severity_score": 35.8,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 5,
+    "size": 1856,
+    "top_categories": [
+      "roads"
+    ],
+    "top_wards": [
+      "Ward-122",
+      "Ward-104",
+      "Ward-48",
+      "Ward-179",
+      "Ward-138"
+    ],
+    "avg_priority_weight": 2.88,
+    "sla_breach_rate": 0.84,
+    "severity_score": 49.18,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 6,
+    "size": 1894,
+    "top_categories": [
+      "roads"
+    ],
+    "top_wards": [
+      "Ward-20",
+      "Ward-161",
+      "Ward-116",
+      "Ward-7",
+      "Ward-177"
+    ],
+    "avg_priority_weight": 2.93,
+    "sla_breach_rate": 0.86,
+    "severity_score": 51.55,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 7,
+    "size": 1221,
+    "top_categories": [
+      "drainage"
+    ],
+    "top_wards": [
+      "Ward-68",
+      "Ward-113",
+      "Ward-99",
+      "Ward-192",
+      "Ward-54"
+    ],
+    "avg_priority_weight": 3.1,
+    "sla_breach_rate": 0.839,
+    "severity_score": 34.79,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 8,
+    "size": 1012,
+    "top_categories": [
+      "electricity"
+    ],
+    "top_wards": [
+      "Ward-170",
+      "Ward-147",
+      "Ward-99",
+      "Ward-92",
+      "Ward-149"
+    ],
+    "avg_priority_weight": 2.98,
+    "sla_breach_rate": 0.95,
+    "severity_score": 29.35,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 9,
+    "size": 1379,
+    "top_categories": [
+      "water_supply"
+    ],
+    "top_wards": [
+      "Ward-108",
+      "Ward-116",
+      "Ward-133",
+      "Ward-103",
+      "Ward-189"
+    ],
+    "avg_priority_weight": 3.05,
+    "sla_breach_rate": 0.83,
+    "severity_score": 38.5,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 10,
+    "size": 994,
+    "top_categories": [
+      "electricity"
+    ],
+    "top_wards": [
+      "Ward-154",
+      "Ward-65",
+      "Ward-181",
+      "Ward-163",
+      "Ward-6"
+    ],
+    "avg_priority_weight": 2.96,
+    "sla_breach_rate": 0.936,
+    "severity_score": 28.43,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 11,
+    "size": 703,
+    "top_categories": [
+      "buildings"
+    ],
+    "top_wards": [
+      "Ward-115",
+      "Ward-22",
+      "Ward-84",
+      "Ward-36",
+      "Ward-192"
+    ],
+    "avg_priority_weight": 2.79,
+    "sla_breach_rate": 0.848,
+    "severity_score": 18.12,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 12,
+    "size": 646,
+    "top_categories": [
+      "parks"
+    ],
+    "top_wards": [
+      "Ward-87",
+      "Ward-186",
+      "Ward-36",
+      "Ward-81",
+      "Ward-173"
+    ],
+    "avg_priority_weight": 2.67,
+    "sla_breach_rate": 0.872,
+    "severity_score": 16.11,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 13,
+    "size": 1179,
+    "top_categories": [
+      "drainage"
+    ],
+    "top_wards": [
+      "Ward-86",
+      "Ward-29",
+      "Ward-184",
+      "Ward-142",
+      "Ward-87"
+    ],
+    "avg_priority_weight": 3.07,
+    "sla_breach_rate": 0.836,
+    "severity_score": 33.28,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 14,
+    "size": 507,
+    "top_categories": [
+      "sanitation"
+    ],
+    "top_wards": [
+      "Ward-144",
+      "Ward-60",
+      "Ward-6",
+      "Ward-105",
+      "Ward-142"
+    ],
+    "avg_priority_weight": 2.8,
+    "sla_breach_rate": 0.787,
+    "severity_score": 12.69,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 15,
+    "size": 676,
+    "top_categories": [
+      "buildings"
+    ],
+    "top_wards": [
+      "Ward-140",
+      "Ward-74",
+      "Ward-144",
+      "Ward-56",
+      "Ward-186"
+    ],
+    "avg_priority_weight": 2.8,
+    "sla_breach_rate": 0.861,
+    "severity_score": 17.62,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 16,
+    "size": 703,
+    "top_categories": [
+      "parks"
+    ],
+    "top_wards": [
+      "Ward-62",
+      "Ward-104",
+      "Ward-175",
+      "Ward-70",
+      "Ward-100"
+    ],
+    "avg_priority_weight": 2.68,
+    "sla_breach_rate": 0.849,
+    "severity_score": 17.4,
+    "severity_category": "critical"
+  },
+  {
+    "cluster_id": 17,
+    "size": 501,
+    "top_categories": [
+      "sanitation"
+    ],
+    "top_wards": [
+      "Ward-55",
+      "Ward-51",
+      "Ward-28",
+      "Ward-49",
+      "Ward-9"
+    ],
+    "avg_priority_weight": 2.82,
+    "sla_breach_rate": 0.81,
+    "severity_score": 12.78,
+    "severity_category": "critical"
+  }
+]

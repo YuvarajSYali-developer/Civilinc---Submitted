@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-06-20T14:44:54.684660",
+  "systems": {
+    "system1_category": {
+      "f1_weighted": 1.0,
+      "target": 0.85,
+      "pass": true
+    },
+    "system2_priority": {
+      "f1_weighted": 0.3175,
+      "target": 0.8,
+      "pass": false
+    },
+    "system3_resolution": {
+      "mae_days": 2.315,
+      "r2": 0.661,
+      "target_mae": 3.0,
+      "pass": true
+    },
+    "system4_clustering": {
+      "n_clusters": 18,
+      "silhouette": 0.6
+    },
+    "system5_delay": {
+      "f1": 0.7482,
+      "auc_roc": 0.8207
+    },
+    "system6_overrun": {
+      "mae_lakhs": 7.11,
+      "r2": 0.984
+    },
+    "system7_ward_risk": {
+      "wards_scored": 197,
+      "critical_count": 0,
+      "high_count": 79
+    }
+  },
+  "summary": {
+    "all_targets_met": false
+  }
+}

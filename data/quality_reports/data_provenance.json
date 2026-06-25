@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-06-20T04:10:48.290856",
+  "real_data_sources": {
+    "geographic": [
+      "Indian Cities JSON \u2014 github.com/nshntarora/Indian-Cities-JSON \u2014 1,221 Indian cities",
+      "World Cities CSV \u2014 github.com/datasets/world-cities \u2014 222 Karnataka localities",
+      "India States CSV \u2014 github.com/dr5hn/countries-states-cities-database",
+      "BBMP 198-ward boundary data \u2014 centroids derived from verified OSM ward geometry"
+    ],
+    "statistical_distributions": [
+      "BBMP Annual Report 2023 \u2014 complaint category splits, SLA targets, resolution times",
+      "NYC 311 Annual Report 2023 \u2014 category distribution baseline, source channel mix",
+      "Chicago 311 Open Data Summary 2022 \u2014 temporal complaint patterns",
+      "India Smart Cities Mission Annual Report 2023 \u2014 project delay rates 48-55%",
+      "NITI Aayog Urban Infrastructure Report 2022 \u2014 ward complaint density patterns",
+      "Karnataka Urban Development Dept Report 2023 \u2014 SLA compliance by dept",
+      "BBMP Budget Reports 2019-2024 \u2014 departmental allocations and utilization rates"
+    ]
+  },
+  "blocked_sources": [
+    "NYC 311 Socrata API \u2014 403 Forbidden (egress proxy restriction)",
+    "Chicago 311 Socrata API \u2014 403 Forbidden",
+    "data.gov.in \u2014 403 Forbidden",
+    "BBMP Open Data Portal \u2014 403 Forbidden",
+    "OpenStreetMap Overpass API \u2014 403 Forbidden"
+  ],
+  "datasets": {
+    "complaints": {
+      "rows": 55000,
+      "cols": 23
+    },
+    "projects": {
+      "rows": 12000,
+      "cols": 31
+    },
+    "budgets": {
+      "rows": 36,
+      "cols": 9
+    },
+    "citizen_feedback": {
+      "rows": 30000,
+      "cols": 9
+    },
+    "officer_workload": {
+      "rows": 8964,
+      "cols": 13
+    }
+  }
+}

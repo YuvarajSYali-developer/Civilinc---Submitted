@@ -1,0 +1,81 @@
+{
+  "total_records": 55000,
+  "missing_values": {
+    "complaint_id": 0,
+    "title": 0,
+    "description": 0,
+    "category": 0,
+    "sub_category": 0,
+    "status": 0,
+    "priority": 0,
+    "ward_number": 0,
+    "zone": 0,
+    "latitude": 0,
+    "longitude": 0,
+    "department": 0,
+    "created_date": 0,
+    "resolved_date": 12996,
+    "resolution_days": 12996,
+    "sla_hours": 0,
+    "sla_breached": 0,
+    "escalation_level": 0,
+    "citizen_rating": 27655,
+    "source": 0,
+    "ai_cluster_id": 55000
+  },
+  "category_distribution": {
+    "roads": 15400,
+    "water_supply": 11000,
+    "drainage": 9900,
+    "electricity": 8250,
+    "parks": 3850,
+    "buildings": 3850,
+    "sanitation": 2750
+  },
+  "status_distribution": {
+    "resolved": 31528,
+    "closed": 10408,
+    "in_progress": 5808,
+    "escalated": 3509,
+    "rejected": 1368,
+    "assigned": 1002,
+    "pending": 775,
+    "under_review": 602
+  },
+  "priority_distribution": {
+    "high": 28156,
+    "critical": 14189,
+    "medium": 8874,
+    "low": 3781
+  },
+  "source_distribution": {
+    "web": 24610,
+    "mobile": 21115,
+    "ivr": 5426,
+    "whatsapp": 3849
+  },
+  "zone_distribution": {
+    "West": 11173,
+    "East": 11107,
+    "North": 11106,
+    "South": 10980,
+    "Central": 10634
+  },
+  "resolution_stats": {
+    "count": 42004.0,
+    "mean": 7.184268164936673,
+    "std": 5.851677329785096,
+    "min": 1.0,
+    "25%": 2.9,
+    "50%": 5.7,
+    "75%": 10.0,
+    "max": 59.6
+  },
+  "sla_breach_rate": "85.1%",
+  "feedback_rate": "49.7%",
+  "avg_rating": 2.5,
+  "date_range": {
+    "min": "2022-01-01 06:09:00",
+    "max": "2024-12-31 22:56:00"
+  }
+}

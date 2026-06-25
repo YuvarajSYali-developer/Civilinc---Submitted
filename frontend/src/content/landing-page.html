@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CivilInc — Urban Infrastructure Coordination</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:       #070D12;
+    --surface:   #0B1520;
+    --panel:     #0F1F30;
+    --border:    rgba(255,255,255,0.07);
+    --accent:    #00E5A0;
+    --accent2:   #0080FF;
+    --accent-dim:#004D30;
+    --text:      #D4E8F0;
+    --muted:     #5E7A8A;
+    --white:     #FFFFFF;
+    --grid:      rgba(0,229,160,0.04);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--ink);
+    color: var(--text);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(7,13,18,0.72);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--white);
+    letter-spacing: -0.03em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
+    color: var(--muted); text-decoration: none; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    padding: 0.6rem 1.5rem;
+    background: var(--accent);
+    color: var(--ink);
+    border-radius: 4px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+    padding: 8rem 4rem 5rem;
+    overflow: hidden;
+  }
+
+  /* engineering blueprint grid */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 30%, transparent 100%);
+  }
+
+  /* glowing orb */
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 900px; height: 900px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,229,160,0.08) 0%, rgba(0,128,255,0.04) 40%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-60%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent);
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 2rem;
+    position: relative; z-index: 1;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 32px; height: 1px; background: var(--accent);
+  }
+
+  .hero-headline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--white);
+    position: relative; z-index: 1;
+    max-width: 14ch;
+  }
+  .hero-headline .accent-word { color: var(--accent); }
+
+  .hero-sub {
+    margin-top: 2.5rem;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 48ch;
+    position: relative; z-index: 1;
+  }
+
+  .hero-actions {
+    margin-top: 3rem;
+    display: flex; align-items: center; gap: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .btn-primary {
+    padding: 1rem 2.5rem;
+    background: var(--accent);
+    color: var(--ink);
+    font-family: 'Space Mono', monospace;
+    font-weight: 700; font-size: 0.8rem; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    border-radius: 4px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 30px rgba(0,229,160,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,229,160,0.5); }
+
+  .btn-ghost {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.85rem; color: var(--text); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--accent); }
+  .btn-ghost svg { transition: transform 0.2s; }
+  .btn-ghost:hover svg { transform: translateX(3px); }
+
+  /* scrolling ticker */
+  .ticker-wrap {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    padding: 1rem 0;
+    background: rgba(11,21,32,0.6);
+    backdrop-filter: blur(8px);
+  }
+  .ticker {
+    display: flex; gap: 4rem;
+    animation: ticker 30s linear infinite;
+    width: max-content;
+  }
+  .ticker-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); white-space: nowrap;
+  }
+  .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .stat-item {
+    padding: 3rem 2rem;
+    border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem; font-weight: 800;
+    color: var(--white); line-height: 1;
+  }
+  .stat-value span { color: var(--accent); }
+  .stat-label {
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 7rem 4rem; }
+  .section-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent);
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800; letter-spacing: -0.03em;
+    color: var(--white); line-height: 1.1;
+  }
+  .section-desc {
+    margin-top: 1.25rem;
+    font-size: 1rem; line-height: 1.7;
+    color: var(--muted); max-width: 48ch;
+  }
+
+  /* ── FEATURES ── */
+  .features-section { background: var(--ink); }
+  .features-header { max-width: 1200px; margin: 0 auto 4rem; }
+  .features-intro {
+    max-width: 1200px; margin: 0 auto 2rem;
+    display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    gap: 1.5rem;
+  }
+  .features-spotlight,
+  .features-rail {
+    background: linear-gradient(180deg, rgba(15,31,48,0.92), rgba(8,16,24,0.94));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+  .features-spotlight::before,
+  .features-rail::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at top right, rgba(0,229,160,0.12), transparent 30%),
+      radial-gradient(circle at bottom left, rgba(0,128,255,0.08), transparent 28%);
+    pointer-events: none;
+  }
+  .features-spotlight-body {
+    position: relative; z-index: 1;
+    padding: 2.25rem 2.25rem 2rem;
+  }
+  .features-kicker {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent);
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(0,229,160,0.08);
+    border: 1px solid rgba(0,229,160,0.16);
+  }
+  .features-spotlight-title {
+    margin-top: 1.15rem;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.65rem, 2.3vw, 2.35rem);
+    line-height: 1.08;
+    font-weight: 700;
+    color: var(--white);
+    max-width: 15ch;
+  }
+  .features-spotlight-desc {
+    margin-top: 1rem;
+    max-width: 50ch;
+    font-size: 0.95rem; line-height: 1.75;
+    color: #A6C0CD;
+  }
+  .features-spotlight-stats {
+    margin-top: 1.75rem;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem;
+  }
+  .spot-stat {
+    padding: 1rem;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+  }
+  .spot-stat-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.55rem; font-weight: 700;
+    color: var(--white);
+  }
+  .spot-stat-label {
+    margin-top: 0.35rem;
+    font-size: 0.73rem; line-height: 1.5;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .features-rail {
+    padding: 1.35rem;
+    display: flex; flex-direction: column; gap: 0.9rem;
+  }
+  .rail-title {
+    position: relative; z-index: 1;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.25rem 0.25rem 0.15rem;
+  }
+  .rail-item {
+    position: relative; z-index: 1;
+    padding: 1rem 1rem 1rem 1.15rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.025);
+  }
+  .rail-item strong {
+    display: block;
+    font-size: 0.84rem;
+    color: var(--white);
+    margin-bottom: 0.35rem;
+  }
+  .rail-item span {
+    font-size: 0.8rem; line-height: 1.6;
+    color: var(--muted);
+  }
+  .features-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .feature-card {
+    background: linear-gradient(180deg, rgba(11,21,32,0.96), rgba(7,13,18,0.98));
+    padding: 2.15rem;
+    transition: background 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+    display: flex; flex-direction: column;
+  }
+  .feature-card::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at top right, rgba(0,229,160,0.09), transparent 28%);
+    opacity: 0; transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .feature-card:hover { background: var(--panel); transform: translateY(-4px); }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-card:hover::after { transform: scaleX(1); }
+
+  .feature-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(0,229,160,0.12), rgba(0,128,255,0.14));
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+    font-size: 1.2rem;
+  }
+  .feature-top {
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+  }
+  .feature-badge {
+    margin-top: 0.2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #78D8FF;
+  }
+  .feature-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--white); margin-bottom: 0.75rem;
+  }
+  .feature-desc { font-size: 0.87rem; line-height: 1.7; color: #99B2BF; }
+  .feature-points {
+    margin-top: auto;
+    padding-top: 1.4rem;
+    display: flex; flex-wrap: wrap; gap: 0.55rem;
+  }
+  .feature-point {
+    padding: 0.38rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text);
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-section { background: var(--surface); }
+  .how-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .how-steps { display: flex; flex-direction: column; gap: 0; }
+  .how-step {
+    display: flex; gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    cursor: default;
+  }
+  .how-step:first-child { padding-top: 0; }
+  .how-step:last-child { border-bottom: none; }
+  .step-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem; color: var(--accent);
+    letter-spacing: 0.1em;
+    padding-top: 0.15rem;
+    flex-shrink: 0;
+    width: 32px;
+  }
+  .step-body {}
+  .step-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--white); margin-bottom: 0.5rem;
+  }
+  .step-desc { font-size: 0.85rem; line-height: 1.6; color: var(--muted); }
+
+  /* fake UI panel */
+  .ui-mockup {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 60px rgba(0,229,160,0.05);
+  }
+  .mockup-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0.85rem 1.25rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .mockup-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem; color: var(--muted);
+    margin-left: 0.5rem; letter-spacing: 0.1em;
+  }
+  .mockup-body { padding: 1.5rem; }
+  .mockup-row {
+    display: flex; gap: 0.75rem; margin-bottom: 0.75rem; align-items: center;
+  }
+  .m-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem; color: var(--muted); width: 80px; flex-shrink: 0;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .m-bar-wrap { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+  .m-bar { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .m-val { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--accent); width: 32px; text-align: right; }
+  .mockup-divider { height: 1px; background: var(--border); margin: 1rem 0; }
+  .mockup-tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .m-tag {
+    padding: 0.25rem 0.65rem;
+    border-radius: 100px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.05em;
+  }
+  .m-tag.green { background: rgba(0,229,160,0.12); color: var(--accent); border: 1px solid rgba(0,229,160,0.2); }
+  .m-tag.blue { background: rgba(0,128,255,0.12); color: #60AAFF; border: 1px solid rgba(0,128,255,0.2); }
+  .m-tag.orange { background: rgba(255,160,50,0.12); color: #FFAA44; border: 1px solid rgba(255,160,50,0.2); }
+  .mockup-map {
+    background: rgba(0,229,160,0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    height: 130px; margin-top: 1rem;
+    display: grid; grid-template-columns: repeat(12,1fr); grid-template-rows: repeat(6,1fr);
+    gap: 2px; padding: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .map-grid-line-h, .map-grid-line-v {
+    position: absolute;
+    background: rgba(0,229,160,0.06);
+  }
+  .map-pin {
+    position: absolute;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+  }
+  .map-pin::after {
+    content: ''; position: absolute;
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 1px solid rgba(0,229,160,0.3);
+    top: -5px; left: -5px;
+    animation: ping 2s ease-out infinite;
+  }
+  @keyframes ping {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(2.5); opacity: 0; }
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--ink); }
+  .testimonials-header { text-align: center; margin-bottom: 4rem; }
+  .testimonials-header .section-eyebrow { justify-content: center; }
+  .testimonials-header .section-eyebrow::before { display: none; }
+  .testimonials-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  }
+  .testimonial-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .testimonial-card::before {
+    content: '\201C';
+    position: absolute; top: 1.5rem; right: 2rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 8rem; line-height: 1;
+    color: rgba(0,229,160,0.07);
+    pointer-events: none;
+  }
+  .testimonial-card:hover { border-color: rgba(0,229,160,0.25); }
+  .testimonial-top {
+    display: flex; align-items: center; gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .testimonial-avatar {
+    width: 64px; height: 64px; border-radius: 50%;
+    object-fit: cover; object-position: top center;
+    border: 2px solid rgba(0,229,160,0.3);
+    flex-shrink: 0;
+    background: var(--surface);
+  }
+  .testimonial-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--white);
+  }
+  .testimonial-role {
+    font-size: 0.78rem; color: var(--accent); margin-top: 0.15rem;
+    font-weight: 500;
+  }
+  .testimonial-org {
+    font-size: 0.75rem; color: var(--muted); margin-top: 0.1rem;
+  }
+  .testimonial-stars {
+    display: flex; gap: 0.2rem; margin-bottom: 1.25rem;
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+  .testimonial-text {
+    font-size: 0.9rem; line-height: 1.75;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  /* ── SECURITY ── */
+  .security-section { background: var(--surface); }
+  .security-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .security-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2.5rem; }
+  .security-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.25rem;
+    background: rgba(0,229,160,0.04);
+    border: 1px solid rgba(0,229,160,0.1);
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  .security-item:hover { background: rgba(0,229,160,0.08); }
+  .security-icon { color: var(--accent); font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0; }
+  .security-item-title { font-weight: 600; font-size: 0.9rem; color: var(--white); margin-bottom: 0.25rem; }
+  .security-item-desc { font-size: 0.8rem; line-height: 1.55; color: var(--muted); }
+  .code-block {
+    background: var(--ink);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    line-height: 1.8;
+  }
+  .code-header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 1.25rem;
+    color: var(--muted);
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.65rem; letter-spacing: 0.08em;
+  }
+  .code-body { padding: 1.5rem; }
+  .c-key { color: #60AAFF; }
+  .c-str { color: var(--accent); }
+  .c-muted { color: var(--muted); }
+  .c-warn { color: #FFAA44; }
+
+  /* ── DEPARTMENTS ── */
+  .dept-section { background: var(--ink); }
+  .dept-inner { max-width: 1200px; margin: 0 auto; }
+  .dept-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+  .dept-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .dept-card {
+    padding: 2rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    transition: border-color 0.3s, transform 0.2s;
+    text-align: center;
+  }
+  .dept-card:hover { border-color: rgba(0,229,160,0.3); transform: translateY(-4px); }
+  .dept-emoji { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .dept-name { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+  .dept-stat { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.05em; }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 8rem 4rem;
+    background: var(--surface);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,229,160,0.07) 0%, transparent 70%);
+  }
+  .cta-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(0,229,160,0.1);
+    border: 1px solid rgba(0,229,160,0.25);
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .cta-section .section-title { max-width: 20ch; margin: 0 auto; position: relative; }
+  .cta-section .section-desc { margin: 1.5rem auto 0; position: relative; }
+  .cta-actions { margin-top: 3rem; display: flex; justify-content: center; gap: 1.25rem; position: relative; }
+  .btn-outline {
+    padding: 1rem 2.5rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    color: var(--text); text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid var(--border);
+    padding: 3rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--white); }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { font-size: 0.75rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 5rem; }
+    section { padding: 5rem 1.5rem; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .stat-item:nth-child(2) { border-right: none; }
+    .features-intro { grid-template-columns: 1fr; }
+    .features-spotlight-stats { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .how-inner, .security-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .dept-grid { grid-template-columns: 1fr 1fr; }
+    .dept-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .cta-section { padding: 5rem 1.5rem; }
+  }
+
+  /* animated underline for hero accent */
+  .hero-headline .accent-word {
+    display: inline;
+    background: linear-gradient(90deg, var(--accent), #00C8FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Civil<span>Inc</span></div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#security">Security</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+  </ul>
+  <a href="/login" class="nav-cta">Sign In →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Urban Infrastructure Platform · v2.0</div>
+  <h1 class="hero-headline">
+    One platform.<br>Every <span class="accent-word">department.</span><br>Zero silos.
+  </h1>
+  <p class="hero-sub">CivilInc connects every municipal department on a single secure platform — real-time geo-tagged project tracking, inter-departmental coordination, and transparent governance at city scale.</p>
+  <div class="hero-actions">
+    <a href="/login" class="btn-primary">Enter Platform</a>
+    <a href="#how" class="btn-ghost">
+      See how it works
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <div class="ticker-item"><span class="ticker-dot"></span>Real-time Project Tracking</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Geo-tagged Data Exchange</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Role-Based Access Control</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Inter-departmental Coordination</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Citizen Complaint Management</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Live Analytics Dashboard</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Secure Communication</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Real-time Project Tracking</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Geo-tagged Data Exchange</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Role-Based Access Control</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Inter-departmental Coordination</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Citizen Complaint Management</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Live Analytics Dashboard</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Secure Communication</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-value">12<span>+</span></div>
+    <div class="stat-label">Departments Connected</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-value">340<span>%</span></div>
+    <div class="stat-label">Faster Decision Cycles</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-value">99<span>.8%</span></div>
+    <div class="stat-label">Platform Uptime SLA</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-value">0<span>ms</span></div>
+    <div class="stat-label">Data Silos Tolerated</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features" class="features-section">
+  <div class="features-header">
+    <div class="section-eyebrow">Core Capabilities</div>
+    <h2 class="section-title">Built for the complexity of city governance</h2>
+    <p class="section-desc">Every feature in CivilInc was designed around the real workflows of government officers — not the other way around.</p>
+  </div>
+  <div class="features-intro">
+    <div class="features-spotlight">
+      <div class="features-spotlight-body">
+        <div class="features-kicker">Command Layer</div>
+        <div class="features-spotlight-title">A single operating surface for civic execution.</div>
+        <div class="features-spotlight-desc">CivilInc brings planning, complaint response, coordination, and oversight into one disciplined workflow so city teams act faster with less friction and better traceability.</div>
+        <div class="features-spotlight-stats">
+          <div class="spot-stat">
+            <div class="spot-stat-value">6</div>
+            <div class="spot-stat-label">mission-critical workflows unified</div>
+          </div>
+          <div class="spot-stat">
+            <div class="spot-stat-value">1</div>
+            <div class="spot-stat-label">shared citywide source of truth</div>
+          </div>
+          <div class="spot-stat">
+            <div class="spot-stat-value">24/7</div>
+            <div class="spot-stat-label">visibility for leadership and field teams</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="features-rail">
+      <div class="rail-title">Why teams adopt it faster</div>
+      <div class="rail-item">
+        <strong>Less switching, fewer silos</strong>
+        <span>Project updates, grievance handling, ward intelligence, and escalations move through the same operational layer.</span>
+      </div>
+      <div class="rail-item">
+        <strong>Built for administrative clarity</strong>
+        <span>Supervisors can immediately understand status, ownership, backlog, and risk without digging through disconnected tools.</span>
+      </div>
+      <div class="rail-item">
+        <strong>Ready for public-sector accountability</strong>
+        <span>Every action is traceable, every assignment visible, and every decision easier to defend in reviews, audits, and governance meetings.</span>
+      </div>
+    </div>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-top">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        </div>
+        <div class="feature-badge">Operations Core</div>
+      </div>
+      <div class="feature-title">Unified Data Exchange</div>
+      <div class="feature-desc">A single source of truth for all municipal projects. Departments submit, update, and access project data through one secured hub — eliminating email chains and spreadsheet silos.</div>
+      <div class="feature-points">
+        <span class="feature-point">Shared records</span>
+        <span class="feature-point">Audit-friendly</span>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-top">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="feature-badge">Spatial View</div>
+      </div>
+      <div class="feature-title">Geo-tagged Visualization</div>
+      <div class="feature-desc">Every project plotted live on an interactive city map. Officers can see on-the-ground status, resource placement, and ward-level progress without leaving their desk.</div>
+      <div class="feature-points">
+        <span class="feature-point">Ward context</span>
+        <span class="feature-point">Live mapping</span>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-top">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <div class="feature-badge">Security</div>
+      </div>
+      <div class="feature-title">Role-Based Access Control</div>
+      <div class="feature-desc">Department-specific permissions enforced at every layer. From commissioners to field officers — each role sees exactly what they need, nothing more.</div>
+      <div class="feature-points">
+        <span class="feature-point">Least privilege</span>
+        <span class="feature-point">Protected APIs</span>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-top">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="feature-badge">Collaboration</div>
+      </div>
+      <div class="feature-title">Inter-departmental Coordination</div>
+      <div class="feature-desc">Threaded discussions, @mentions, and shared task boards that span departments. Decisions are logged, traceable, and visible to supervisors in real time.</div>
+      <div class="feature-points">
+        <span class="feature-point">Shared threads</span>
+        <span class="feature-point">Decision trail</span>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-top">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="feature-badge">Citizen Flow</div>
+      </div>
+      <div class="feature-title">Complaint Management</div>
+      <div class="feature-desc">Citizen grievances auto-routed by ward, category, and priority. Each complaint is tracked from submission to resolution — with SLA timers and escalation triggers built in.</div>
+      <div class="feature-points">
+        <span class="feature-point">SLA timers</span>
+        <span class="feature-point">Priority routing</span>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-top">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="feature-badge">Leadership</div>
+      </div>
+      <div class="feature-title">Analytics & Reporting</div>
+      <div class="feature-desc">Live dashboards showing project progress, departmental throughput, and budget utilization. Exportable reports for governance audits, council meetings, and public transparency portals.</div>
+      <div class="feature-points">
+        <span class="feature-point">KPI dashboards</span>
+        <span class="feature-point">Exportable reports</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how-section">
+  <div class="how-inner">
+    <div>
+      <div class="section-eyebrow">How It Works</div>
+      <h2 class="section-title">From filing to field — tracked at every step</h2>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <div class="step-title">Department logs a project or complaint</div>
+            <div class="step-desc">Officers submit project proposals or citizen grievances through the portal. Each entry is automatically geo-tagged, timestamped, and assigned a priority level.</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <div class="step-title">Smart routing to the right authority</div>
+            <div class="step-desc">The system routes each item to the correct department and officer based on ward, category, and current workload — with full audit trail from day one.</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <div class="step-title">Live tracking visible to all stakeholders</div>
+            <div class="step-desc">Progress is visible on the city map in real time. Supervisors, coordinators, and commissioners see exactly what's active, what's delayed, and what needs escalation.</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <div class="step-title">Resolution logged and data retained</div>
+            <div class="step-desc">Closed projects feed back into analytics. Historical data informs future budget allocations, resource planning, and governance reports — nothing is lost.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-mockup">
+      <div class="mockup-bar">
+        <div class="mockup-dot" style="background:#FF5F57"></div>
+        <div class="mockup-dot" style="background:#FEBC2E"></div>
+        <div class="mockup-dot" style="background:#28C840"></div>
+        <span class="mockup-title">CIVILINC · LIVE DASHBOARD</span>
+      </div>
+      <div class="mockup-body">
+        <div style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--muted);letter-spacing:0.08em;margin-bottom:1rem;text-transform:uppercase;">Dept. Throughput — Last 30 Days</div>
+        <div class="mockup-row">
+          <div class="m-label">Roads</div>
+          <div class="m-bar-wrap"><div class="m-bar" style="width:82%"></div></div>
+          <div class="m-val">82%</div>
+        </div>
+        <div class="mockup-row">
+          <div class="m-label">Water</div>
+          <div class="m-bar-wrap"><div class="m-bar" style="width:67%"></div></div>
+          <div class="m-val">67%</div>
+        </div>
+        <div class="mockup-row">
+          <div class="m-label">Sanitation</div>
+          <div class="m-bar-wrap"><div class="m-bar" style="width:91%"></div></div>
+          <div class="m-val">91%</div>
+        </div>
+        <div class="mockup-row">
+          <div class="m-label">Electricity</div>
+          <div class="m-bar-wrap"><div class="m-bar" style="width:54%"></div></div>
+          <div class="m-val">54%</div>
+        </div>
+        <div class="mockup-divider"></div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--muted);letter-spacing:0.08em;margin-bottom:0.75rem;text-transform:uppercase;">Active Status</div>
+        <div class="mockup-tag-row">
+          <span class="m-tag green">● 14 On Track</span>
+          <span class="m-tag orange">● 3 At Risk</span>
+          <span class="m-tag blue">● 7 In Review</span>
+        </div>
+        <div class="mockup-map">
+          <div class="map-pin" style="top:30%;left:40%"></div>
+          <div class="map-pin" style="top:55%;left:65%;animation-delay:0.7s"></div>
+          <div class="map-pin" style="top:20%;left:70%;animation-delay:1.2s"></div>
+          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 15px,rgba(0,229,160,0.04) 15px,rgba(0,229,160,0.04) 16px),repeating-linear-gradient(90deg,transparent,transparent 20px,rgba(0,229,160,0.04) 20px,rgba(0,229,160,0.04) 21px);"></div>
+          <div style="position:absolute;bottom:0.5rem;right:0.75rem;font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--muted);">City Ward Map · Live</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials">
+  <div class="testimonials-header">
+    <div class="section-eyebrow">Testimonials</div>
+    <h2 class="section-title">Trusted by those who govern</h2>
+    <p class="section-desc" style="margin:1rem auto 0;max-width:50ch;">Officials at the frontlines of urban governance have seen what CivilInc can do.</p>
+  </div>
+  <div class="testimonials-grid">
+    <!-- Testimonial 1: Charulatha Somal -->
+    <div class="testimonial-card">
+      <div class="testimonial-top">
+        <img
+          class="testimonial-avatar"
+          src="/images/charulatha%20somal.png"
+          alt="Charulatha Somal"
+          onerror="this.style.background='linear-gradient(135deg,#004D30,#0080FF)';this.style.display='flex';this.alt='CS';"
+        />
+        <div>
+          <div class="testimonial-name">Charulatha Somal</div>
+          <div class="testimonial-role">Deputy Secretary</div>
+          <div class="testimonial-org">Dept. of Personnel &amp; Training, New Delhi, India</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        "CivilInc is a forward-thinking solution designed to streamline coordination among urban governance departments. Its features — real-time project tracking, geo-tagged data sharing, and secure communication — have enabled officers to monitor development activities more effectively and make informed decisions faster. By promoting transparency, accountability, and collaboration, CivilInc stands out as a powerful tool for improving project execution and reducing administrative delays. I see immense potential in its ability to support smart, sustainable urban development and highly recommend its implementation across city administrations."
+      </p>
+    </div>
+
+    <!-- Testimonial 2: Chidanand Vatare -->
+    <div class="testimonial-card">
+      <div class="testimonial-top">
+        <img
+          class="testimonial-avatar"
+          src="/images/chidanand%20vatare.png"
+          alt="Chidanand Vatare"
+          onerror="this.style.background='linear-gradient(135deg,#004D30,#0080FF)';this.style.display='flex';this.alt='CS';"
+        />
+        <div>
+          <div class="testimonial-name">Chidanand Vatare</div>
+          <div class="testimonial-role">Ex-Managing Director</div>
+          <div class="testimonial-org">Shimoga Smart City Company Limited, Karnataka, India</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        "CivilInc is an innovative solution designed to improve coordination among urban governance departments. This platform could have greatly benefited the Shimoga Smart City project by optimizing resource utilization, enhancing data sharing, and streamlining project execution — critical areas where challenges were faced. Its ability to promote transparency and public engagement makes it a valuable tool for any city administration. I see immense potential in this platform to support effective and timely project delivery, reduce delays, and improve collaboration across departments. I highly recommend its implementation to foster better urban governance and sustainable development."
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section id="security" class="security-section">
+  <div class="security-inner">
+    <div>
+      <div class="section-eyebrow">Security</div>
+      <h2 class="section-title">Governance demands uncompromising security</h2>
+      <p class="section-desc">CivilInc was architected from day one for the data sensitivity requirements of government infrastructure.</p>
+      <div class="security-list">
+        <div class="security-item">
+          <div class="security-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="security-item-title">JWT-based Authentication</div>
+            <div class="security-item-desc">Every session is token-bound with short-lived access tokens and server-enforced expiry. No persistent sessions, no flat credential storage.</div>
+          </div>
+        </div>
+        <div class="security-item">
+          <div class="security-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <div>
+            <div class="security-item-title">Granular RBAC</div>
+            <div class="security-item-desc">Permissions enforced at the API layer — not just the UI. Department isolation ensures no cross-ward data leakage at any access tier.</div>
+          </div>
+        </div>
+        <div class="security-item">
+          <div class="security-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div>
+            <div class="security-item-title">Full Audit Trail</div>
+            <div class="security-item-desc">Every read, write, and status change is immutably logged with user, timestamp, and IP. Governance audits pull structured reports in one click.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="code-block">
+      <div class="code-header">
+        <span style="color:var(--accent)">●</span> API · auth.service.py
+      </div>
+      <div class="code-body">
+        <div><span class="c-key">@router</span><span class="c-muted">.post(</span><span class="c-str">"/token"</span><span class="c-muted">)</span></div>
+        <div><span class="c-key">async def</span> <span style="color:#FFAA44">login</span><span class="c-muted">(form: OAuth2PasswordRequestForm):</span></div>
+        <div style="padding-left:1.5rem"><span class="c-key">user</span> = <span style="color:#FFAA44">authenticate_user</span><span class="c-muted">(</span></div>
+        <div style="padding-left:3rem"><span class="c-muted">db,</span> form<span class="c-muted">.username,</span></div>
+        <div style="padding-left:3rem">form<span class="c-muted">.password</span></div>
+        <div style="padding-left:1.5rem"><span class="c-muted">)</span></div>
+        <div style="padding-left:1.5rem"><span class="c-key">if not</span> user:</div>
+        <div style="padding-left:3rem"><span class="c-key">raise</span> HTTPException<span class="c-muted">(</span></div>
+        <div style="padding-left:4.5rem">status_code=<span class="c-str">401</span><span class="c-muted">,</span></div>
+        <div style="padding-left:4.5rem">detail=<span class="c-str">"Invalid credentials"</span></div>
+        <div style="padding-left:3rem"><span class="c-muted">)</span></div>
+        <div style="padding-left:1.5rem"><span class="c-key">token</span> = <span style="color:#FFAA44">create_access_token</span><span class="c-muted">(</span></div>
+        <div style="padding-left:3rem">data=<span class="c-muted">{</span><span class="c-str">"sub"</span><span class="c-muted">: user.id,</span></div>
+        <div style="padding-left:4.5rem"><span class="c-str">"dept"</span><span class="c-muted">: user.department,</span></div>
+        <div style="padding-left:4.5rem"><span class="c-str">"role"</span><span class="c-muted">: user.role</span><span class="c-muted">},</span></div>
+        <div style="padding-left:3rem">expires_delta=<span class="c-str">30</span><span class="c-muted">  </span><span class="c-warn"># minutes</span></div>
+        <div style="padding-left:1.5rem"><span class="c-muted">)</span></div>
+        <div style="padding-left:1.5rem"><span class="c-key">return</span> <span class="c-muted">{</span><span class="c-str">"access_token"</span><span class="c-muted">: token}</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTMENTS -->
+<section class="dept-section">
+  <div class="dept-inner">
+    <div class="dept-header">
+      <div>
+        <div class="section-eyebrow">Who Uses CivilInc</div>
+        <h2 class="section-title">Built for every wing of city governance</h2>
+      </div>
+      <p class="section-desc" style="max-width:30ch;text-align:right;">Cross-departmental by design — no department left in the dark.</p>
+    </div>
+    <div class="dept-grid">
+      <div class="dept-card">
+        <span class="dept-emoji">🏗️</span>
+        <div class="dept-name">Public Works</div>
+        <div class="dept-stat">Roads · Bridges · Drains</div>
+      </div>
+      <div class="dept-card">
+        <span class="dept-emoji">💧</span>
+        <div class="dept-name">Water Board</div>
+        <div class="dept-stat">Supply · Distribution · Quality</div>
+      </div>
+      <div class="dept-card">
+        <span class="dept-emoji">⚡</span>
+        <div class="dept-name">BESCOM / Power</div>
+        <div class="dept-stat">Grid · Outages · Maintenance</div>
+      </div>
+      <div class="dept-card">
+        <span class="dept-emoji">🌿</span>
+        <div class="dept-name">Sanitation</div>
+        <div class="dept-stat">Waste · SWM · Cleanliness</div>
+      </div>
+      <div class="dept-card">
+        <span class="dept-emoji">🏥</span>
+        <div class="dept-name">Health</div>
+        <div class="dept-stat">Clinics · Epidemiology</div>
+      </div>
+      <div class="dept-card">
+        <span class="dept-emoji">📐</span>
+        <div class="dept-name">Town Planning</div>
+        <div class="dept-stat">Zoning · Permits · Land Use</div>
+      </div>
+      <div class="dept-card">
+        <span class="dept-emoji">🚌</span>
+        <div class="dept-name">Transport</div>
+        <div class="dept-stat">Transit · Signals · Mobility</div>
+      </div>
+      <div class="dept-card">
+        <span class="dept-emoji">🏛️</span>
+        <div class="dept-name">Commissioner's Office</div>
+        <div class="dept-stat">Overview · Escalations · Reports</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="cta-section">
+  <div class="cta-badge">
+    <span>●</span> Now Accepting Early Access Requests
+  </div>
+  <h2 class="section-title">Your city deserves better coordination</h2>
+  <p class="section-desc">Join the municipalities already piloting CivilInc. Reach out for a personalised walkthrough with your department leads.</p>
+  <div class="cta-actions">
+    <a href="/login" class="btn-primary">Go to Sign In</a>
+    <a href="#features" class="btn-outline">Explore Features</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Civil<span>Inc</span></div>
+  <ul class="footer-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#security">Security</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="mailto:hello@civilinc.in">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 CivilInc · Built by Yuvaraj S. Yali · MIT Manipal</div>
+</footer>
+
+</body>
+</html>

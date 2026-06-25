@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --sidebar-w: 260px;
+    --app-bg: linear-gradient(180deg, #f8fbff 0%, #edf3fb 100%);
+    --panel-bg: rgba(255, 255, 255, 0.88);
+    --panel-border: rgba(148, 163, 184, 0.18);
+    --hero-glow: radial-gradient(circle at top left, rgba(59, 95, 192, 0.18), transparent 30%),
+      radial-gradient(circle at top right, rgba(15, 118, 110, 0.12), transparent 24%);
+  }
+  .dark {
+    --app-bg: linear-gradient(180deg, #07111f 0%, #0b1729 100%);
+    --panel-bg: rgba(15, 23, 42, 0.8);
+    --panel-border: rgba(148, 163, 184, 0.12);
+    --hero-glow: radial-gradient(circle at top left, rgba(59, 95, 192, 0.22), transparent 30%),
+      radial-gradient(circle at top right, rgba(45, 212, 191, 0.08), transparent 24%);
+  }
+  html { @apply bg-surface-50 dark:bg-surface-950; }
+  body {
+    @apply antialiased text-slate-800 dark:text-slate-100 font-sans;
+    background: var(--hero-glow), var(--app-bg);
+    min-height: 100vh;
+  }
+  * { @apply border-surface-200 dark:border-surface-800; }
+  #app { min-height: 100vh; }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-surface-950 disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-primary-600 text-white shadow-[0_12px_30px_rgba(45,79,168,0.24)] hover:bg-primary-700 hover:-translate-y-0.5 focus:ring-primary-500; }
+  .btn-secondary { @apply btn bg-white/90 dark:bg-surface-900/90 text-slate-700 dark:text-slate-200 border border-surface-200/80 dark:border-surface-700 hover:bg-surface-100 dark:hover:bg-surface-800 focus:ring-surface-400; }
+  .btn-danger { @apply btn bg-danger text-white hover:bg-red-600 hover:-translate-y-0.5 focus:ring-red-500; }
+  .btn-ghost { @apply btn text-slate-600 dark:text-slate-300 hover:bg-white/80 dark:hover:bg-surface-900 focus:ring-surface-400; }
+  .btn-sm { @apply px-3 py-1.5 text-xs; }
+  .btn-lg { @apply px-6 py-3 text-base; }
+
+  .card {
+    @apply rounded-2xl border shadow-[0_20px_60px_rgba(15,23,42,0.08)] dark:shadow-[0_20px_60px_rgba(2,6,23,0.35)] backdrop-blur-sm;
+    background: var(--panel-bg);
+    border-color: var(--panel-border);
+  }
+  .card-header { @apply px-6 py-4 border-b border-surface-200/70 dark:border-surface-800/80; }
+  .card-body { @apply p-6; }
+
+  .input { @apply w-full px-4 py-3 text-sm bg-white/90 dark:bg-surface-900/90 border border-surface-200 dark:border-surface-700 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors; }
+  .label { @apply block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5; }
+  .select { @apply input; }
+
+  .badge { @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold; }
+  .badge-critical { @apply badge bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400; }
+  .badge-high { @apply badge bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400; }
+  .badge-medium { @apply badge bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400; }
+  .badge-low { @apply badge bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400; }
+  .badge-pending { @apply badge bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300; }
+  .badge-resolved { @apply badge bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400; }
+  .badge-in-progress { @apply badge bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400; }
+
+  .stat-card { @apply card p-6 flex flex-col gap-2 min-h-[148px]; }
+  .stat-value { @apply text-3xl font-display font-bold text-slate-900 dark:text-white tracking-tight; }
+  .stat-label { @apply text-sm text-slate-500 dark:text-slate-400; }
+  .stat-change { @apply text-xs font-medium; }
+  .stat-change.up { @apply text-green-600 dark:text-green-400; }
+  .stat-change.down { @apply text-red-600 dark:text-red-400; }
+
+  .table-wrap { @apply card overflow-hidden; }
+  .table { @apply w-full text-sm; }
+  .table thead { @apply bg-surface-50 dark:bg-surface-800/50; }
+  .table th { @apply px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider; }
+  .table td { @apply px-4 py-3 text-slate-700 dark:text-slate-200; }
+  .table tbody tr { @apply border-t border-surface-100 dark:border-surface-800 hover:bg-surface-50 dark:hover:bg-surface-800/50 transition-colors; }
+
+  .sidebar-link { @apply flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-white/80 dark:hover:bg-surface-800/90 hover:text-slate-900 dark:hover:text-white transition-all duration-150 cursor-pointer; }
+  .sidebar-link.active { @apply bg-slate-900 text-white shadow-[0_18px_32px_rgba(15,23,42,0.18)] hover:bg-slate-900 dark:bg-white dark:text-slate-900 dark:hover:bg-white; }
+
+  .page-header { @apply mb-7; }
+  .page-title { @apply text-3xl font-display font-bold tracking-tight text-slate-900 dark:text-white; }
+  .page-subtitle { @apply mt-2 text-sm text-slate-500 dark:text-slate-400 max-w-3xl; }
+
+  .risk-critical { @apply text-red-600 bg-red-50 dark:bg-red-900/20 dark:text-red-400; }
+  .risk-high { @apply text-orange-600 bg-orange-50 dark:bg-orange-900/20 dark:text-orange-400; }
+  .risk-medium { @apply text-yellow-600 bg-yellow-50 dark:bg-yellow-900/20 dark:text-yellow-400; }
+  .risk-low { @apply text-green-600 bg-green-50 dark:bg-green-900/20 dark:text-green-400; }
+
+  .glass-panel {
+    @apply rounded-2xl border border-white/60 dark:border-white/10 backdrop-blur-xl;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.1);
+  }
+  .dark .glass-panel {
+    background: rgba(15, 23, 42, 0.72);
+  }
+  .panel-title { @apply text-lg font-display font-semibold text-slate-900 dark:text-white tracking-tight; }
+  .muted-kicker {
+    @apply text-xs font-semibold uppercase text-slate-400 dark:text-slate-500;
+    letter-spacing: 0.18em;
+  }
+  .icon-chip { @apply inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/60 dark:border-white/10 bg-white/80 dark:bg-surface-900/80 text-slate-600 dark:text-slate-200 shadow-sm; }
+  .data-grid { @apply grid gap-4 sm:grid-cols-2 xl:grid-cols-4; }
+}
+
+@layer utilities {
+  .scrollbar-thin { scrollbar-width: thin; scrollbar-color: theme('colors.surface.300') transparent; }
+  .scrollbar-thin::-webkit-scrollbar { width: 4px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: theme('colors.surface.300'); border-radius: 4px; }
+}
+
+/* Leaflet dark mode */
+.dark .leaflet-tile { filter: invert(1) hue-rotate(180deg) brightness(0.85); }
+.dark .leaflet-container { background: #1e293b; }
+
+/* Smooth transitions */
+.fade-enter-active, .fade-leave-active { transition: opacity 0.2s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
+.slide-up-enter-active { transition: all 0.3s ease; }
+.slide-up-enter-from { transform: translateY(10px); opacity: 0; }
