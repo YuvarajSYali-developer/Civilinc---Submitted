@@ -41,7 +41,7 @@ async function saveUpdate() {
   try {
     const { data } = await complaintsApi.update(complaint.value.id, updateForm.value)
     complaint.value = data
-    const h = await complaintsApi.history(complaint.value.id)
+    const h = await complaintsApi.history(data.id)
     history.value = h.data
     updateForm.value.comment = ''
     ui.toast('Complaint updated', 'success')

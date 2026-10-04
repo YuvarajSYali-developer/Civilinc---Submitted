@@ -34,6 +34,7 @@ export interface Complaint {
   citizen_id: string; department_id?: string; assigned_officer_id?: string
   ai_predicted_category?: string; ai_predicted_priority?: string
   ai_predicted_resolution_days?: number; ai_confidence_score?: number
+  ai_processed?: boolean
   sla_breached: boolean; sla_due_at?: string
   citizen_rating?: number; source: string; escalation_level: number
   created_at: string; updated_at: string

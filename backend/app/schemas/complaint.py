@@ -75,6 +75,7 @@ class ComplaintResponse(BaseModel):
     ai_predicted_priority: Optional[str] = None
     ai_predicted_resolution_days: Optional[int] = None
     ai_confidence_score: Optional[float] = None
+    ai_processed: bool = False
     sla_breached: bool
     sla_due_at: Optional[str] = None
     citizen_rating: Optional[int] = None

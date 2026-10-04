@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, type Component } from 'vue'
 import { analyticsApi, aiApi } from '@/services/api'
 import StatCard from '@/components/common/StatCard.vue'
 import {
@@ -37,7 +37,7 @@ onMounted(async () => {
 })
 
 const RISK_BADGE: Record<string,string> = { critical:'badge-critical', high:'badge-high', medium:'badge-medium', low:'badge-low' }
-const CAT_ICONS = { roads: TrafficCone, water_supply: Droplets, drainage: MapPinned, electricity: Lightbulb, parks: Trees, buildings: Building2, sanitation: Recycle }
+const CAT_ICONS: Record<string, Component> = { roads: TrafficCone, water_supply: Droplets, drainage: MapPinned, electricity: Lightbulb, parks: Trees, buildings: Building2, sanitation: Recycle }
 </script>
 <template>
   <div class="space-y-6">

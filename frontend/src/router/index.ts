@@ -42,7 +42,16 @@ router.beforeEach(async (to) => {
   if (!auth.user && auth.token) await auth.init()
   if (to.meta.requiresAuth && !auth.isAuthenticated) return '/login'
   if (to.meta.public && auth.isAuthenticated && !to.meta.allowAuthenticated) return '/dashboard'
-  if (to.meta.roles && !to.meta.roles.includes(auth.role)) return '/dashboard'
+  if (to.meta.roles && (!auth.role || !to.meta.roles.includes(auth.role))) return '/dashboard'
 })
+
+declare module 'vue-router' {
+  interface RouteMeta {
+    public?: boolean
+    allowAuthenticated?: boolean
+    requiresAuth?: boolean
+    roles?: string[]
+  }
+}
 
 export default router

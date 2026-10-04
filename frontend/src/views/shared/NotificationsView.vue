@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, type Component } from 'vue'
 import { useNotificationsStore } from '@/stores/notifications'
 import { Bell, BellRing, Megaphone, MessageSquareReply, RefreshCw, Siren, TriangleAlert, UserRound, Wrench } from 'lucide-vue-next'
 const notifs = useNotificationsStore()
 onMounted(notifs.fetchNotifications)
-const TYPE_ICON = { complaint_created: BellRing, complaint_updated: RefreshCw, project_updated: Wrench, assignment: UserRound, forum_reply: MessageSquareReply, system: Bell, broadcast: Megaphone, escalation: Siren, sla_breach: TriangleAlert }
+const TYPE_ICON: Record<string, Component> = { complaint_created: BellRing, complaint_updated: RefreshCw, project_updated: Wrench, assignment: UserRound, forum_reply: MessageSquareReply, system: Bell, broadcast: Megaphone, escalation: Siren, sla_breach: TriangleAlert }
 </script>
 <template>
   <div class="max-w-2xl mx-auto space-y-4">
