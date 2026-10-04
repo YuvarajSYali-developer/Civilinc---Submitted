@@ -50,6 +50,6 @@ backend/uploads/
 
 # Local duplicates / unused project artifacts
 images/
-index.html
+/index.html
 backend/error.txt
 backend/upgrade_log.txt
